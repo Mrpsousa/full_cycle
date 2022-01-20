@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/mrpsousa/full_cycle/communication/gRPC/pb"
-	"google.golang.org/grpc"
 	"context"
 	"fmt"
+	"io"
 	"log"
-)
 
+	"github.com/mrpsousa/full_cycle/communication/gRPC/pb"
+	"google.golang.org/grpc"
+)
 
 func main() {
 	connection, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
@@ -18,14 +19,15 @@ func main() {
 	defer connection.Close()
 
 	client := pb.NewUserServiceClient(connection)
-	AddUser(client)
+	// AddUser(client)
+	AddUserVerbose(client)
 }
 
 func AddUser(client pb.UserServiceClient) {
-	
+
 	req := &pb.User{
-		Id: "0",
-		Name: "Roger", 
+		Id:    "0",
+		Name:  "Roger",
 		Email: "Oi@outro.com",
 	}
 
@@ -35,4 +37,30 @@ func AddUser(client pb.UserServiceClient) {
 	}
 
 	fmt.Println(res)
+}
+
+func AddUserVerbose(client pb.UserServiceClient) {
+
+	req := &pb.User{
+		Id:    "0",
+		Name:  "Roger",
+		Email: "Oi@outro.com",
+	}
+
+	responseStream, err := client.AddUserVerbose(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Could not make gRPC request: %v", err)
+	}
+
+	for {
+		stream, err := responseStream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatalf("Could not receive the msg: %v", err)
+		}
+		fmt.Println("Status: ", stream.Status)
+
+	}
 }

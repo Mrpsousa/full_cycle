@@ -2,7 +2,7 @@ type Category {
     id: ID!
     name: String!
     description: String
-    courses: [Courses!]!
+    courses: [Course!]!
 }
 
 type Course {
@@ -16,7 +16,7 @@ type Course {
 type Chapter {
     id: ID!
     name: String!
-    course: Courses!
+    course: Course!
     category: Category!
 }
 
@@ -33,7 +33,7 @@ input NewCourse {
 
 input NewChapter {
     name: String!
-    couseId: ID!
+    courseId: ID!
 }
 
 type Query {

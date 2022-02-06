@@ -21,3 +21,5 @@ services:
     container_name: consulcliente01
     hostname: consulcliente01
     command: ['tail', '-f', '/dev/null']
+    volumes:
+      - ./clients/consul01:/etc/consul.d

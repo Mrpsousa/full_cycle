@@ -8,3 +8,7 @@
 
  ## installs
  -  go get gopkg.in/confluentinc/confluent-kafka-go.v1/kafka
+
+ ## project
+ -  kafka-topics --create --topic=teste --bootstrap-server=localhost:9092 --partitions=3
+ -  kafka-console-consumer --bootstrap-server=localhost:9092 --topic=teste

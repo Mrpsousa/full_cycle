@@ -6,3 +6,9 @@
 
 ### installs
     - go get -u github.com/stretchr/testify
+
+### command line
+    - mockgen -destination=application/mocks/application.go -source=application/product.go
+
+### tests
+    - go test ./...

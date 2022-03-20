@@ -9,6 +9,9 @@
 
 ### command line
     - mockgen -destination=application/mocks/application.go -source=application/product.go
+    - sqlite3 sqlite.db
+        - create table products(id string, name string, price float, status string);
+        - .tables
 
 ### tests
     - go test ./...

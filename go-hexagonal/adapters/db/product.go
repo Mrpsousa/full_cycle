@@ -49,7 +49,7 @@ func (p *ProductDb) Save(product application.ProductInterface) (application.Prod
 }
 
 func (p *ProductDb) create(product application.ProductInterface) (application.ProductInterface, error) {
-	stmt, err := p.db.Prepare(`insert into products(id, name, price, status) valeus(?,?,?,?)`)
+	stmt, err := p.db.Prepare(`insert into products(id, name, price, status) values(?,?,?,?)`)
 	if err != nil {
 		return nil, err
 	}

@@ -32,7 +32,7 @@ func Run(service application.ProductServiceInterface, action string, productId s
 
 		result = fmt.Sprintf("Product %s has been enabled", res.GetName())
 
-	case "disable":
+	case "disabled":
 		product, err := service.Get(productId)
 		if err != nil {
 			return result, err

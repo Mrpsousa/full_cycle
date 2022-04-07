@@ -15,3 +15,12 @@
 
 ### tests
     - go test ./...
+
+### Run with cobra 
+    - up container ...
+    - docker exec -it appproduct bash
+    - cobra init
+    - go mod tidy
+    - cobra add cli
+    - go run main.go cli -a=create -n=Product -p=25.0
+    

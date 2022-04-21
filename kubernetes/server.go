@@ -1,0 +1,13 @@
+package main
+
+import "net/http"
+
+func main() {
+	println("app running...")
+	http.HandleFunc("/", Hello)
+	http.ListenAndServe(":8080", nil)
+}
+
+func Hello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("<h1>Hello Full Cycle</h1>"))
+}

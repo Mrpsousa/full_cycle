@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: "goserver"
+  labels:
+    app: "goserver"
+spec:
+  containers:
+    - name: goserver
+      image: "mrpsousa/go-server:latest"
+  tolerations:
+  - key: "example-key"
+    operator: "Exists"
+    effect: "NoSchedule"

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  goserver:
+    build:
+      context: .
+    container_name: goserver
+    restart: always
+    network_mode: "host"
+    ports:
+    - "8888:8888"
+ 
